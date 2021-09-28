@@ -250,15 +250,10 @@ namespace БиблиотекаБГУИР
 
         public Accounting(int id, int id_book, int id_status, string наименование)
         {
-            this.Id = id;
-            this.Id_book = id_book;
-            this.Id_status = id_status;
-            this.Наименование = наименование;
+            this.id = id;
+            this.id_book = id_book;
+            this.id_status = id_status;
+            this.наименование = наименование;
         }
-
-        public int Id { get => id; set => id = value; }
-        public int Id_book { get => id_book; set => id_book = value; }
-        public int Id_status { get => id_status; set => id_status = value; }
-        public string Наименование { get => наименование; set => наименование = value; }
     }
 }

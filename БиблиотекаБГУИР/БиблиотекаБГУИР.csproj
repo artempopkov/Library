@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountingWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountingWindow.Designer.cs">
+      <DependentUpon>AccountingWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AuthorWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     <Compile Include="Статусы.cs" />
     <Compile Include="Учёт.cs" />
     <Compile Include="Читатели.cs" />
+    <EmbeddedResource Include="AccountingWindow.resx">
+      <DependentUpon>AccountingWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\AuthorWindow.resx">
       <DependentUpon>AuthorWindow.cs</DependentUpon>
     </EmbeddedResource>
