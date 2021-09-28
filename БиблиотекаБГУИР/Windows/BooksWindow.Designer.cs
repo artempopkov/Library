@@ -47,7 +47,7 @@ namespace БиблиотекаБГУИР
             this.CategoryButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.status_button = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.accounting_button = new System.Windows.Forms.Button();
             this.дата_изданияDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.наименовниеTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -234,17 +234,18 @@ namespace БиблиотекаБГУИР
             this.status_button.UseVisualStyleBackColor = false;
             this.status_button.Click += new System.EventHandler(this.status_button_Click);
             // 
-            // button1
+            // accounting_button
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(16, 219);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 33);
-            this.button1.TabIndex = 41;
-            this.button1.Text = "Учёт";
-            this.button1.UseVisualStyleBackColor = false;
+            this.accounting_button.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.accounting_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.accounting_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.accounting_button.Location = new System.Drawing.Point(16, 219);
+            this.accounting_button.Name = "accounting_button";
+            this.accounting_button.Size = new System.Drawing.Size(82, 33);
+            this.accounting_button.TabIndex = 41;
+            this.accounting_button.Text = "Учёт";
+            this.accounting_button.UseVisualStyleBackColor = false;
+            this.accounting_button.Click += new System.EventHandler(this.accounting_button_Click);
             // 
             // дата_изданияDateTimePicker
             // 
@@ -290,7 +291,7 @@ namespace БиблиотекаБГУИР
             this.Controls.Add(this.CategoryButton);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.status_button);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.accounting_button);
             this.Controls.Add(автор_IDLabel);
             this.Controls.Add(дата_изданияLabel);
             this.Controls.Add(this.дата_изданияDateTimePicker);
@@ -323,7 +324,7 @@ namespace БиблиотекаБГУИР
         private System.Windows.Forms.Button CategoryButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button status_button;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button accounting_button;
         private System.Windows.Forms.DateTimePicker дата_изданияDateTimePicker;
         private System.Windows.Forms.TextBox наименовниеTextBox;
         private System.Windows.Forms.Label label3;
