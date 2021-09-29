@@ -299,6 +299,7 @@ namespace БиблиотекаБГУИР
             this.Controls.Add(this.наименовниеTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "BooksWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BooksWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BooksWindow_FormClosing);
             this.Load += new System.EventHandler(this.BooksWindow_Load);

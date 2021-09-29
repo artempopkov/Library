@@ -41,9 +41,17 @@ namespace БиблиотекаБГУИР
             this.booksGrid = new System.Windows.Forms.DataGridView();
             this.КнигаComboBox = new System.Windows.Forms.ComboBox();
             this.СтатусComboBox = new System.Windows.Forms.ComboBox();
+            this.BooksdataGridView = new System.Windows.Forms.DataGridView();
+            this.StatusdataGridView = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
             автор_IDLabel = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.booksGrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BooksdataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusdataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // автор_IDLabel
@@ -77,7 +85,7 @@ namespace БиблиотекаБГУИР
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(578, 207);
+            this.label3.Location = new System.Drawing.Point(597, 163);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(133, 13);
             this.label3.TabIndex = 85;
@@ -85,10 +93,11 @@ namespace БиблиотекаБГУИР
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(559, 180);
+            this.textBox1.Location = new System.Drawing.Point(578, 136);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(162, 20);
             this.textBox1.TabIndex = 84;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // AddButton
             // 
@@ -137,6 +146,7 @@ namespace БиблиотекаБГУИР
             this.booksGrid.Name = "booksGrid";
             this.booksGrid.Size = new System.Drawing.Size(472, 162);
             this.booksGrid.TabIndex = 79;
+            this.booksGrid.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.booksGrid_ColumnHeaderMouseClick);
             // 
             // КнигаComboBox
             // 
@@ -154,11 +164,70 @@ namespace БиблиотекаБГУИР
             this.СтатусComboBox.Size = new System.Drawing.Size(198, 21);
             this.СтатусComboBox.TabIndex = 90;
             // 
+            // BooksdataGridView
+            // 
+            this.BooksdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.BooksdataGridView.Location = new System.Drawing.Point(15, 247);
+            this.BooksdataGridView.Name = "BooksdataGridView";
+            this.BooksdataGridView.Size = new System.Drawing.Size(240, 150);
+            this.BooksdataGridView.TabIndex = 91;
+            // 
+            // StatusdataGridView
+            // 
+            this.StatusdataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.StatusdataGridView.Location = new System.Drawing.Point(276, 247);
+            this.StatusdataGridView.Name = "StatusdataGridView";
+            this.StatusdataGridView.Size = new System.Drawing.Size(240, 150);
+            this.StatusdataGridView.TabIndex = 92;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label2.Location = new System.Drawing.Point(106, 220);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(64, 24);
+            this.label2.TabIndex = 93;
+            this.label2.Text = "Книги";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(352, 220);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(85, 24);
+            this.label4.TabIndex = 94;
+            this.label4.Text = "Статусы";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(597, 211);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(133, 13);
+            this.label5.TabIndex = 96;
+            this.label5.Text = "Поиск по наименованию";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(578, 184);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(162, 20);
+            this.textBox2.TabIndex = 95;
+            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
             // AccountingWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 240);
+            this.ClientSize = new System.Drawing.Size(782, 422);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.StatusdataGridView);
+            this.Controls.Add(this.BooksdataGridView);
             this.Controls.Add(this.СтатусComboBox);
             this.Controls.Add(label1);
             this.Controls.Add(this.КнигаComboBox);
@@ -175,8 +244,11 @@ namespace БиблиотекаБГУИР
             this.Name = "AccountingWindow";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AccountingWindow";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AccountingWindow_FormClosing);
             this.Load += new System.EventHandler(this.AccountingWindow_Load);
             ((System.ComponentModel.ISupportInitialize)(this.booksGrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.BooksdataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.StatusdataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -194,5 +266,11 @@ namespace БиблиотекаБГУИР
         private System.Windows.Forms.DataGridView booksGrid;
         private System.Windows.Forms.ComboBox КнигаComboBox;
         private System.Windows.Forms.ComboBox СтатусComboBox;
+        private System.Windows.Forms.DataGridView BooksdataGridView;
+        private System.Windows.Forms.DataGridView StatusdataGridView;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }

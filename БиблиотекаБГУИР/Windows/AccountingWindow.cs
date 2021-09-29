@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Data.Entity;
+
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -23,9 +26,23 @@ namespace БиблиотекаБГУИР
             InitializeComponent();
             accounting = DataContext.Select<Учёт>().FirstOrDefault();
             InitList();
-            //InitTextBox();
             InitGrid();
             InitComboBox();
+            InitTextBox();
+            InitOtherGrids();
+        }
+
+        private void InitOtherGrids()
+        {
+            BooksdataGridView.DataSource = DataContext.Select<Книги>().ToList();
+            BooksdataGridView.Columns["Автор_ID"].Visible = false;
+            BooksdataGridView.Columns["Категория_ID"].Visible = false;
+            BooksdataGridView.Columns["Авторы"].Visible = false;
+            BooksdataGridView.Columns["Категории"].Visible = false;
+            BooksdataGridView.Columns["Учёт"].Visible = false;
+
+            StatusdataGridView.DataSource = DataContext.Select<Статусы>().ToList();
+            StatusdataGridView.Columns["Учёт"].Visible = false;
         }
 
         private void AccountingWindow_Load(object sender, EventArgs e)
@@ -56,7 +73,8 @@ namespace БиблиотекаБГУИР
             this.Hide();
             (new StatusWindow(this)).Show();
         }
-        private void InitGrid(List<Status> ls = null)
+
+        private void InitGrid(List<Accounting> ls = null)
         {
             if (ls != null)
             {
@@ -202,7 +220,7 @@ namespace БиблиотекаБГУИР
                 int id_b1 = DataContext.Select<Книги>().Where(o => o.ID == b).FirstOrDefault().ID;
                 //foreach (var item in accountinglist)
                 //{
-                //    if (id_b == item.Id_book)
+                //    if (id_b == item.код_книги)
                 //    {
                 //        throw new ArgumentException();
                 //    }
@@ -241,7 +259,7 @@ namespace БиблиотекаБГУИР
         {
             if (textBox1.Text != "")
             {
-                //booksGrid.DataSource = accountinglist.Where(u => u.Наименование.ToLower().Contains(textBox1.Text.ToLower())).ToList();
+                booksGrid.DataSource = accountinglist.Where(u => u.Книга.ToLower().Contains(textBox1.Text.ToLower())).ToList();
 
             }
             else
@@ -258,7 +276,10 @@ namespace БиблиотекаБГУИР
                 switch (columnIndex)
                 {
                     case 1:
-                        //InitGrid(accountinglist.OrderBy(o => o.Наименование).ToList<Status>());
+                        InitGrid(accountinglist.OrderBy(o => o.Книга).ToList<Accounting>());
+                        break;
+                    case 2:
+                        InitGrid(accountinglist.OrderBy(o => o.Статyс).ToList<Accounting>());
                         break;
 
                 }
@@ -268,7 +289,10 @@ namespace БиблиотекаБГУИР
                 switch (columnIndex)
                 {
                     case 1:
-                       // InitGrid(accountinglist.OrderByDescending(o => o.Наименование).ToList<Status>());
+                        InitGrid(accountinglist.OrderByDescending(o => o.Книга).ToList<Accounting>());
+                        break;
+                    case 2:
+                        InitGrid(accountinglist.OrderByDescending(o => o.Статyс).ToList<Accounting>());
                         break;
                 }
 
@@ -296,6 +320,24 @@ namespace БиблиотекаБГУИР
             InitTextBox();
             InitGrid();
         }
+
+        private void AccountingWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Show();
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox2.Text != "")
+            {
+                booksGrid.DataSource = accountinglist.Where(u => u.Статyс.ToLower().Contains(textBox1.Text.ToLower())).ToList();
+
+            }
+            else
+            {
+                InitGrid();
+            }
+        }
     }
     public class Accounting
     {
@@ -315,9 +357,9 @@ namespace БиблиотекаБГУИР
         }
 
         public int Id { get => id; set => id = value; }
-        public string Book { get => book; set => book = value; }
-        public string Status { get => status; set => status = value; }
-        public int Id_book { get => id_book; set => id_book = value; }
-        public int Id_status { get => id_status; set => id_status = value; }
+        public string Книга { get => book; set => book = value; }
+        public string Статyс { get => status; set => status = value; }
+        public int код_книги { get => id_book; set => id_book = value; }
+        public int код_статуса { get => id_status; set => id_status = value; }
     }
 }
