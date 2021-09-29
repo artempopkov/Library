@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -39,12 +40,14 @@ namespace БиблиотекаБГУИР
             {
                 ID = p.ID,
                 Книга = p.Книги,
-                Статус = p.Статусы
+                Статус = p.Статусы,
+                ID_Книги = p.Книга_ID,
+                ID_Статус = p.Статус_ID
             }).ToList();
 
             foreach (var item in ls)
             {
-                accountinglist.Add(new Accounting(item.ID, item.Книга.Наименовние, item.Статус.Статус));
+                accountinglist.Add(new Accounting(item.ID, item.Книга.Наименовние, item.Статус.Статус,item.ID_Книги,item.ID_Статус));
             }
         }
 
@@ -71,34 +74,22 @@ namespace БиблиотекаБГУИР
         {
             var listBook = DataContext.Select<Книги>();
             var listStatus= DataContext.Select<Статусы>();
-            //if (listBook != null)
-            //{
-            //    foreach (var item in listBook)
-            //    {
-            //        КнигаComboBox.Items.Add(item);
-
-            //    }
-            //}
-
-            КнигаComboBox.DataSource = DataContext.Select<Книги>().Select(p => new
+            if (listBook != null)
             {
-                Книга = p.Наименовние,
-                Шифр = p.Шифр
-            }).ToList();
+                foreach (var item in listBook)
+                {
+                    КнигаComboBox.Items.Add(item.ID);
 
-            //if (listStatus != null)
-            //{
-            //    foreach (var item in listStatus)
-            //    {
-            //        СтатусComboBox.Items.Add(item);
-            //    }
-            //}
-            СтатусComboBox.DataSource = DataContext.Select<Статусы>().Select(p => new
+                }
+            }
+
+            if (listStatus != null)
             {
-                Статус = p.Статус
-            }).ToList();
-
-
+                foreach (var item in listStatus)
+                {
+                    СтатусComboBox.Items.Add(item.ID);
+                }
+            }
         }
 
         private void InitTextBox()
@@ -111,12 +102,13 @@ namespace БиблиотекаБГУИР
 
             foreach (var item in КнигаComboBox.Items)
             {
-                if (item.GetHashCode() == accounting.Книги.Шифр.GetHashCode())
+                if (item.GetHashCode() == accounting.Книга_ID.GetHashCode())
                     КнигаComboBox.SelectedItem = item;
             }
+
             foreach (var item in СтатусComboBox.Items)
             {
-                if (item.GetHashCode() == accounting.Статусы.GetHashCode())
+                if (item.GetHashCode() == accounting.Статус_ID.GetHashCode())
                     СтатусComboBox.SelectedItem = item;
             }
 
@@ -195,24 +187,43 @@ namespace БиблиотекаБГУИР
 
         private void SaveChanges_Click(object sender, EventArgs e)
         {
-            if (accounting.ID == -1)
+            try
             {
-                int id = DataContext.Select<Учёт>().ToList().Last().ID;
-                accounting.ID = id + 1;
-            }
 
-           // accounting.Статус = наименовниеTextBox.Text;
+                if (accounting.ID == -1)
+                {
+                    int id = DataContext.Select<Учёт>().ToList().Last().ID;
+                    accounting.ID = id + 1;
+                }
+                int a = Convert.ToInt32(КнигаComboBox.SelectedItem.ToString());
+                int id_b = DataContext.Select<Книги>().Where(o => o.ID == a).FirstOrDefault().ID;
 
-            if (DataContext.Select<Учёт>().Where(o => o.ID == accounting.ID).FirstOrDefault() != null)
-            {
-                DataContext.Update<Учёт>(DataContext.Select<Учёт>().Where(o => o.ID == accounting.ID).First());
+                int b = Convert.ToInt32(СтатусComboBox.SelectedItem.ToString());
+                int id_b1 = DataContext.Select<Книги>().Where(o => o.ID == b).FirstOrDefault().ID;
+                //foreach (var item in accountinglist)
+                //{
+                //    if (id_b == item.Id_book)
+                //    {
+                //        throw new ArgumentException();
+                //    }
+                //}
+                accounting.Книга_ID = id_b;
+                accounting.Статус_ID = id_b1;
+                if (DataContext.Select<Учёт>().Where(o => o.ID == accounting.ID).FirstOrDefault() != null)
+                {
+                    DataContext.Update<Учёт>(DataContext.Select<Учёт>().Where(o => o.ID == accounting.ID).First());
+                }
+                else
+                {
+                    DataContext.Insert<Учёт>(accounting);
+                }
+                InitList();
+                InitGrid();
             }
-            else
+            catch(Exception ex)
             {
-                DataContext.Insert<Учёт>(accounting);
+                MessageBox.Show(ex.Message);
             }
-            InitList();
-            InitGrid();
         }
 
         private void AddButton_Click(object sender, EventArgs e)
@@ -291,16 +302,22 @@ namespace БиблиотекаБГУИР
         int id;
         string book;
         string status;
+        int id_book;
+        int id_status;
 
-        public Accounting(int id, string id_book, string id_status)
+        public Accounting(int id, string book, string status, int id_book, int id_status)
         {
-            this.Id = id;
-            this.Book = id_book;
-            this.Status = id_status;
+            this.id = id;
+            this.book = book;
+            this.status = status;
+            this.id_book = id_book;
+            this.id_status = id_status;
         }
 
         public int Id { get => id; set => id = value; }
         public string Book { get => book; set => book = value; }
         public string Status { get => status; set => status = value; }
+        public int Id_book { get => id_book; set => id_book = value; }
+        public int Id_status { get => id_status; set => id_status = value; }
     }
 }

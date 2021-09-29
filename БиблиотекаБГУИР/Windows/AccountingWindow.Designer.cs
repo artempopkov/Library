@@ -133,7 +133,7 @@ namespace БиблиотекаБГУИР
             // booksGrid
             // 
             this.booksGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.booksGrid.Location = new System.Drawing.Point(12, 12);
+            this.booksGrid.Location = new System.Drawing.Point(15, 13);
             this.booksGrid.Name = "booksGrid";
             this.booksGrid.Size = new System.Drawing.Size(472, 162);
             this.booksGrid.TabIndex = 79;
@@ -158,7 +158,7 @@ namespace БиблиотекаБГУИР
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 261);
+            this.ClientSize = new System.Drawing.Size(782, 240);
             this.Controls.Add(this.СтатусComboBox);
             this.Controls.Add(label1);
             this.Controls.Add(this.КнигаComboBox);
