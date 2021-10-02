@@ -40,3 +40,5 @@ D:\00Library\Library\БиблиотекаБГУИР\bin\Debug\EntityFramework.Sq
 D:\00Library\Library\БиблиотекаБГУИР\bin\Debug\ru\EntityFramework.resources.dll
 D:\00Library\Library\БиблиотекаБГУИР\obj\Debug\БиблиотекаБГУИР.csproj.CopyComplete
 C:\Users\King\source\repos\БиблиотекаБГУИР\БиблиотекаБГУИР\obj\Debug\БиблиотекаБГУИР.AccountingWindow.resources
+D:\00Library\Library\БиблиотекаБГУИР\obj\Debug\БиблиотекаБГУИР.LibrarianWindow.resources
+D:\00Library\Library\БиблиотекаБГУИР\obj\Debug\БиблиотекаБГУИР.ReadersWindow.resources

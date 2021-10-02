@@ -29,5 +29,11 @@ namespace БиблиотекаБГУИР
             window.Show();
             
         }
+
+        private void ReadersWindow_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            new ReadersWindow(this).Show();
+        }
     }
 }

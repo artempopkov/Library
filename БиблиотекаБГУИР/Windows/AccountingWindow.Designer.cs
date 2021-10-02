@@ -85,7 +85,7 @@ namespace БиблиотекаБГУИР
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(597, 163);
+            this.label3.Location = new System.Drawing.Point(595, 162);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(133, 13);
             this.label3.TabIndex = 85;
@@ -203,11 +203,11 @@ namespace БиблиотекаБГУИР
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(597, 211);
+            this.label5.Location = new System.Drawing.Point(614, 207);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(133, 13);
+            this.label5.Size = new System.Drawing.Size(95, 13);
             this.label5.TabIndex = 96;
-            this.label5.Text = "Поиск по наименованию";
+            this.label5.Text = "Поиск по статусу";
             // 
             // textBox2
             // 

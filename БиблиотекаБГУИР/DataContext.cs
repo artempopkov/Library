@@ -27,7 +27,7 @@ namespace БиблиотекаБГУИР
                 context.Entry(entity).State = EntityState.Added;
                 context.SaveChanges();
             }
-            catch(Exception ex)
+            catch(Exception)
             {
                 MessageBox.Show("Попытка дублирования данных");
             }

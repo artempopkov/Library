@@ -43,7 +43,7 @@ namespace БиблиотекаБГУИР
             this.NextItem = new System.Windows.Forms.Button();
             this.PriviousItem = new System.Windows.Forms.Button();
             this.booksGrid = new System.Windows.Forms.DataGridView();
-            this.button5 = new System.Windows.Forms.Button();
+            this.LibrarianButton = new System.Windows.Forms.Button();
             this.CategoryButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.status_button = new System.Windows.Forms.Button();
@@ -183,17 +183,18 @@ namespace БиблиотекаБГУИР
             this.booksGrid.TabIndex = 46;
             this.booksGrid.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.booksGrid_ColumnHeaderMouseClick);
             // 
-            // button5
+            // LibrarianButton
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Location = new System.Drawing.Point(368, 219);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(89, 33);
-            this.button5.TabIndex = 45;
-            this.button5.Text = "Библиотекари";
-            this.button5.UseVisualStyleBackColor = false;
+            this.LibrarianButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LibrarianButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LibrarianButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.LibrarianButton.Location = new System.Drawing.Point(368, 219);
+            this.LibrarianButton.Name = "LibrarianButton";
+            this.LibrarianButton.Size = new System.Drawing.Size(89, 33);
+            this.LibrarianButton.TabIndex = 45;
+            this.LibrarianButton.Text = "Библиотекари";
+            this.LibrarianButton.UseVisualStyleBackColor = false;
+            this.LibrarianButton.Click += new System.EventHandler(this.LibrarianButton_Click);
             // 
             // CategoryButton
             // 
@@ -287,7 +288,7 @@ namespace БиблиотекаБГУИР
             this.Controls.Add(this.NextItem);
             this.Controls.Add(this.PriviousItem);
             this.Controls.Add(this.booksGrid);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.LibrarianButton);
             this.Controls.Add(this.CategoryButton);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.status_button);
@@ -321,7 +322,7 @@ namespace БиблиотекаБГУИР
         private System.Windows.Forms.Button NextItem;
         private System.Windows.Forms.Button PriviousItem;
         private System.Windows.Forms.DataGridView booksGrid;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button LibrarianButton;
         private System.Windows.Forms.Button CategoryButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button status_button;

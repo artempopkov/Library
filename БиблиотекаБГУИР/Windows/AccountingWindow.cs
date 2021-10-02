@@ -268,6 +268,19 @@ namespace БиблиотекаБГУИР
             }
         }
 
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox2.Text != "")
+            {
+                booksGrid.DataSource = accountinglist.Where(u => u.Статyс.ToLower().Contains(textBox2.Text.ToLower())).ToList();
+
+            }
+            else
+            {
+                InitGrid();
+            }
+        }
+
         private void booksGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             int columnIndex = e.ColumnIndex;
@@ -326,18 +339,6 @@ namespace БиблиотекаБГУИР
             this.Owner.Show();
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            if (textBox2.Text != "")
-            {
-                booksGrid.DataSource = accountinglist.Where(u => u.Статyс.ToLower().Contains(textBox1.Text.ToLower())).ToList();
-
-            }
-            else
-            {
-                InitGrid();
-            }
-        }
     }
     public class Accounting
     {
