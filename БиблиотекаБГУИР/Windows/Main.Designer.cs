@@ -58,6 +58,7 @@ namespace БиблиотекаБГУИР
             this.ReadersWindow.TabIndex = 1;
             this.ReadersWindow.Text = "Читатели";
             this.ReadersWindow.UseVisualStyleBackColor = false;
+            this.ReadersWindow.Click += new System.EventHandler(this.ReadersWindow_Click);
             // 
             // ReportsWindow
             // 
@@ -82,7 +83,7 @@ namespace БиблиотекаБГУИР
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Главное окно";
+            this.Text = "dg";
             this.Load += new System.EventHandler(this.Main_Load);
             this.ResumeLayout(false);
 

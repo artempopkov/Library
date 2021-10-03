@@ -20,10 +20,17 @@ namespace БиблиотекаБГУИР
         public static void Insert<TEntity>(TEntity entity)
             where TEntity : class
         {
-            context.Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
+            try
+            {
+                context.Database.Log = (s => System.Diagnostics.Debug.WriteLine(s));
 
-            context.Entry(entity).State = EntityState.Added;
-            context.SaveChanges();
+                context.Entry(entity).State = EntityState.Added;
+                context.SaveChanges();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Попытка дублирования данных");
+            }
 
         }
 

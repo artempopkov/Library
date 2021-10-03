@@ -43,11 +43,11 @@ namespace БиблиотекаБГУИР
             this.NextItem = new System.Windows.Forms.Button();
             this.PriviousItem = new System.Windows.Forms.Button();
             this.booksGrid = new System.Windows.Forms.DataGridView();
-            this.button5 = new System.Windows.Forms.Button();
+            this.LibrarianButton = new System.Windows.Forms.Button();
             this.CategoryButton = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.status_button = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.accounting_button = new System.Windows.Forms.Button();
             this.дата_изданияDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.наименовниеTextBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -183,17 +183,18 @@ namespace БиблиотекаБГУИР
             this.booksGrid.TabIndex = 46;
             this.booksGrid.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.booksGrid_ColumnHeaderMouseClick);
             // 
-            // button5
+            // LibrarianButton
             // 
-            this.button5.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Location = new System.Drawing.Point(368, 219);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(89, 33);
-            this.button5.TabIndex = 45;
-            this.button5.Text = "Библиотекари";
-            this.button5.UseVisualStyleBackColor = false;
+            this.LibrarianButton.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.LibrarianButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LibrarianButton.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.LibrarianButton.Location = new System.Drawing.Point(368, 219);
+            this.LibrarianButton.Name = "LibrarianButton";
+            this.LibrarianButton.Size = new System.Drawing.Size(89, 33);
+            this.LibrarianButton.TabIndex = 45;
+            this.LibrarianButton.Text = "Библиотекари";
+            this.LibrarianButton.UseVisualStyleBackColor = false;
+            this.LibrarianButton.Click += new System.EventHandler(this.LibrarianButton_Click);
             // 
             // CategoryButton
             // 
@@ -234,17 +235,18 @@ namespace БиблиотекаБГУИР
             this.status_button.UseVisualStyleBackColor = false;
             this.status_button.Click += new System.EventHandler(this.status_button_Click);
             // 
-            // button1
+            // accounting_button
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Location = new System.Drawing.Point(16, 219);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(82, 33);
-            this.button1.TabIndex = 41;
-            this.button1.Text = "Учёт";
-            this.button1.UseVisualStyleBackColor = false;
+            this.accounting_button.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.accounting_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.accounting_button.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.accounting_button.Location = new System.Drawing.Point(16, 219);
+            this.accounting_button.Name = "accounting_button";
+            this.accounting_button.Size = new System.Drawing.Size(82, 33);
+            this.accounting_button.TabIndex = 41;
+            this.accounting_button.Text = "Учёт";
+            this.accounting_button.UseVisualStyleBackColor = false;
+            this.accounting_button.Click += new System.EventHandler(this.accounting_button_Click);
             // 
             // дата_изданияDateTimePicker
             // 
@@ -286,11 +288,11 @@ namespace БиблиотекаБГУИР
             this.Controls.Add(this.NextItem);
             this.Controls.Add(this.PriviousItem);
             this.Controls.Add(this.booksGrid);
-            this.Controls.Add(this.button5);
+            this.Controls.Add(this.LibrarianButton);
             this.Controls.Add(this.CategoryButton);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.status_button);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.accounting_button);
             this.Controls.Add(автор_IDLabel);
             this.Controls.Add(дата_изданияLabel);
             this.Controls.Add(this.дата_изданияDateTimePicker);
@@ -298,6 +300,7 @@ namespace БиблиотекаБГУИР
             this.Controls.Add(this.наименовниеTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "BooksWindow";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "BooksWindow";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BooksWindow_FormClosing);
             this.Load += new System.EventHandler(this.BooksWindow_Load);
@@ -319,11 +322,11 @@ namespace БиблиотекаБГУИР
         private System.Windows.Forms.Button NextItem;
         private System.Windows.Forms.Button PriviousItem;
         private System.Windows.Forms.DataGridView booksGrid;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button LibrarianButton;
         private System.Windows.Forms.Button CategoryButton;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button status_button;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button accounting_button;
         private System.Windows.Forms.DateTimePicker дата_изданияDateTimePicker;
         private System.Windows.Forms.TextBox наименовниеTextBox;
         private System.Windows.Forms.Label label3;

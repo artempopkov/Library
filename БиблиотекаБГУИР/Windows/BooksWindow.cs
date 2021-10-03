@@ -280,6 +280,18 @@ namespace БиблиотекаБГУИР
             this.Hide();
             (new AuthorWindow(this)).Show();
         }
+
+        private void accounting_button_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new AccountingWindow(this)).Show();
+        }
+
+        private void LibrarianButton_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            (new LibrarianWindow(this)).Show();
+        }
     }
     public class BOOK
     {
