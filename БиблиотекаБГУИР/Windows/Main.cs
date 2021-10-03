@@ -33,7 +33,7 @@ namespace БиблиотекаБГУИР
         private void ReadersWindow_Click(object sender, EventArgs e)
         {
             this.Hide();
-            new ReadersWindow(this).Show();
+            (new ReadersWindow(this)).Show();
         }
     }
 }

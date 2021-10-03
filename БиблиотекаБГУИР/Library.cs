@@ -14,7 +14,7 @@ namespace БиблиотекаБГУИР
 
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<Авторы> Авторы { get; set; }
-        public virtual DbSet<Адреса> Адреса { get; set; }
+       //public virtual DbSet<Адреса> Адреса { get; set; }
         public virtual DbSet<Библиотекари> Библиотекари { get; set; }
         public virtual DbSet<Карта_Читателя> Карта_Читателя { get; set; }
         public virtual DbSet<Категории> Категории { get; set; }
@@ -29,12 +29,6 @@ namespace БиблиотекаБГУИР
                 .HasMany(e => e.Книги)
                 .WithRequired(e => e.Авторы)
                 .HasForeignKey(e => e.Автор_ID)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Адреса>()
-                .HasMany(e => e.Читатели)
-                .WithRequired(e => e.Адреса)
-                .HasForeignKey(e => e.Адрес_ID)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Карта_Читателя>()

@@ -55,6 +55,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Windows\ReaderBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\ReaderBook.Designer.cs">
+      <DependentUpon>ReaderBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SelectBookWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Windows\SelectBookWindow.Designer.cs">
+      <DependentUpon>SelectBookWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="Windows\LibrarianWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +130,9 @@
     <Compile Include="Статусы.cs" />
     <Compile Include="Учёт.cs" />
     <Compile Include="Читатели.cs" />
+    <EmbeddedResource Include="Windows\ReaderBook.resx">
+      <DependentUpon>ReaderBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Windows\LibrarianWindow.resx">
       <DependentUpon>LibrarianWindow.cs</DependentUpon>
     </EmbeddedResource>
@@ -132,6 +147,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\ReadersWindow.resx">
       <DependentUpon>ReadersWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Windows\SelectBookWindow.resx">
+      <DependentUpon>SelectBookWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Windows\StatusWindow.resx">
       <DependentUpon>StatusWindow.cs</DependentUpon>

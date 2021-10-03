@@ -222,6 +222,12 @@ namespace БиблиотекаБГУИР
                     case 1:
                         InitGrid(librarianlist.OrderBy(o => o.Имя).ToList<Librarian>());
                         break;
+                    case 2:
+                        InitGrid(librarianlist.OrderBy(o => o.Фамилия).ToList<Librarian>());
+                        break;
+                    case 3:
+                        InitGrid(librarianlist.OrderBy(o => o.Номер_телефона).ToList<Librarian>());
+                        break;
 
                 }
             }
@@ -231,6 +237,12 @@ namespace БиблиотекаБГУИР
                 {
                     case 1:
                         InitGrid(librarianlist.OrderByDescending(o => o.Имя).ToList<Librarian>());
+                        break;
+                    case 2:
+                        InitGrid(librarianlist.OrderByDescending(o => o.Фамилия).ToList<Librarian>());
+                        break;
+                    case 3:
+                        InitGrid(librarianlist.OrderByDescending(o => o.Номер_телефона).ToList<Librarian>());
                         break;
                 }
 

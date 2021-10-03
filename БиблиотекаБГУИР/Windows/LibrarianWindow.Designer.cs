@@ -58,6 +58,24 @@ namespace БиблиотекаБГУИР
             наименовниеLabel.TabIndex = 87;
             наименовниеLabel.Text = "Имя:";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(490, 38);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(59, 13);
+            label1.TabIndex = 97;
+            label1.Text = "Фамилия:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(490, 67);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(96, 13);
+            label2.TabIndex = 99;
+            label2.Text = "Номер телефона:";
+            // 
             // Delete_Button
             // 
             this.Delete_Button.Location = new System.Drawing.Point(395, 180);
@@ -71,15 +89,15 @@ namespace БиблиотекаБГУИР
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(614, 132);
+            this.label3.Location = new System.Drawing.Point(629, 132);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(133, 13);
+            this.label3.Size = new System.Drawing.Size(89, 13);
             this.label3.TabIndex = 95;
-            this.label3.Text = "Поиск по наименованию";
+            this.label3.Text = "Поиск по имени";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(601, 109);
+            this.textBox1.Location = new System.Drawing.Point(592, 109);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(162, 20);
             this.textBox1.TabIndex = 94;
@@ -132,6 +150,7 @@ namespace БиблиотекаБГУИР
             this.booksGrid.Name = "booksGrid";
             this.booksGrid.Size = new System.Drawing.Size(472, 162);
             this.booksGrid.TabIndex = 89;
+            this.booksGrid.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.booksGrid_ColumnHeaderMouseClick);
             // 
             // наименовниеTextBox
             // 
@@ -140,30 +159,12 @@ namespace БиблиотекаБГУИР
             this.наименовниеTextBox.Size = new System.Drawing.Size(200, 20);
             this.наименовниеTextBox.TabIndex = 88;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(490, 38);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(59, 13);
-            label1.TabIndex = 97;
-            label1.Text = "Фамилия:";
-            // 
             // FamiliaText
             // 
             this.FamiliaText.Location = new System.Drawing.Point(576, 38);
             this.FamiliaText.Name = "FamiliaText";
             this.FamiliaText.Size = new System.Drawing.Size(200, 20);
             this.FamiliaText.TabIndex = 98;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(490, 67);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(96, 13);
-            label2.TabIndex = 99;
-            label2.Text = "Номер телефона:";
             // 
             // NumberText
             // 
