@@ -18,7 +18,8 @@ namespace БиблиотекаБГУИР
         {
             InitializeComponent();
             this.Owner = owner;
-            BooksdataGridView.DataSource = DataContext.Select<Книги>().Select(s => new
+            
+            var ls = DataContext.Select<Книги>().Select(s => new
             {
                 ID = s.ID,
                 Наименование = s.Наименовние,
@@ -27,6 +28,22 @@ namespace БиблиотекаБГУИР
                 Шифр = s.Шифр,
                 Категория = s.Категории.Наименование
             }).ToList();
+            var status = DataContext.Select<Учёт>();
+
+            for(int i = 0; i< ls.Count();i++)
+            {
+                int id = ls[i].ID;
+                var a = status.Where(o => o.Книга_ID == id).First();
+                if (a.Статус_ID == 2 || a.Статус_ID == 3)
+                {
+                    ls.Remove(ls[i]);
+                    i--;
+                }
+            }
+
+            BooksdataGridView.DataSource = ls;
+
+
             BooksdataGridView.Columns["ID"].Visible = false;
         }
 

@@ -17,7 +17,9 @@ namespace БиблиотекаБГУИР
         bool sortOrder = false;
         int rowIndex = 0;
         int ReaderId;
-        public static int BookID;
+        //public static int BookID;
+        public static int BookID =-1;
+        
         public ReaderBook(Form owner, int reader)
         {
             InitializeComponent();
@@ -64,7 +66,7 @@ namespace БиблиотекаБГУИР
 
             foreach (var item in ls)
             {
-                reader_booklist.Add(new ReaderBooks(item.ID, DataContext.Select<Книги>().Where(o => o.ID == item.Книга).First().Наименовние, item.Книга, item.Дата_Получения, item.Дата_Возврата));
+               reader_booklist.Add(new ReaderBooks(item.ID, DataContext.Select<Книги>().Where(o => o.ID == item.Книга).First().Наименовние, item.Книга, item.Дата_Получения, item.Дата_Возврата));
             }
         }
 
@@ -87,6 +89,18 @@ namespace БиблиотекаБГУИР
             }
         }
 
+        private void Initentity()
+        {
+            try
+            {
+                reader_book.Книга_ID = DataContext.Select<Книги>().Where(o => o.ID == BookID).First().ID;
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Не выбрана книга!");
+            }
+        }
+
         private void InitTextBox()
         {
             if (reader_book == null)
@@ -96,8 +110,10 @@ namespace БиблиотекаБГУИР
                 GetDateText.Text = "";
                 return;
             }
-
+            
             наименовниеTextBox.Text = DataContext.Select<Книги>().Where(o => o.ID == reader_book.Книга_ID).First().Наименовние;
+            
+            
             GetDateText.Text = reader_book.Дата_заказа.ToString();
             if (reader_book.Дата_возврата == null)
             {
@@ -111,37 +127,42 @@ namespace БиблиотекаБГУИР
 
         private void PriviousItem_Click(object sender, EventArgs e)
         {
-            //try
-            //{
-            //    booksGrid.Rows[rowIndex].Selected = false;
-            //}
-            //catch (Exception)
-            //{
+            try
+            {
+                booksGrid.Rows[rowIndex].Selected = false;
+            }
+            catch (Exception)
+            {
 
-            //}
+            }
 
-            //try
-            //{
-            //    rowIndex -= 1;
-            //    if (rowIndex < 0)
-            //    {
-            //        throw new Exception();
-            //    }
+            try
+            {
+                rowIndex -= 1;
+                if (rowIndex < 0)
+                {
+                    throw new Exception();
+                }
 
-            //    int id = reader_booklist[rowIndex].Id;
-            //    reader_book = DataContext.Select<Карта_Читателя>().Where(o => o.ID == id).First();
-            //}
-            //catch (Exception)
-            //{
-            //    rowIndex = booksGrid.Rows.Count - 1;
-            //    reader_book = DataContext.Select<Карта_Читателя>().ToList().Last();
+                string id = reader_booklist[rowIndex].Id;
+                //string rId = Convert.ToString(ReaderId);
+                //Читатели a = DataContext.Select<Читатели>().Where(o => o.ID == ReaderId).First();
+                reader_book = DataContext.Select<Карта_Читателя>().Where(o => o.ID == id).First();
 
-            //}
-            //finally
-            //{
-            //    booksGrid.Rows[rowIndex].Selected = true;
-            //    InitTextBox();
-            //}
+                //int id = reader_booklist[rowIndex].Id;
+                //reader_book = DataContext.Select<Карта_Читателя>().Where(o => o.ID == id).First();
+            }
+            catch (Exception)
+            {
+                rowIndex = booksGrid.Rows.Count - 1;
+                reader_book = DataContext.Select<Карта_Читателя>().ToList().Last();
+
+            }
+            finally
+            {
+                booksGrid.Rows[rowIndex].Selected = true;
+                InitTextBox();
+            }
         }
 
         private void наименовниеTextBox_Click(object sender, EventArgs e)
@@ -150,92 +171,133 @@ namespace БиблиотекаБГУИР
             (new SelectBookWindow(this)).Show();
         }
 
-        //private void NextItem_Click(object sender, EventArgs e)
-        //{
-        //    try
-        //    {
-        //        booksGrid.Rows[rowIndex].Selected = false;
-        //    }
-        //    catch (Exception)
-        //    {
+        private void NextItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                booksGrid.Rows[rowIndex].Selected = false;
+            }
+            catch (Exception)
+            {
 
-        //    }
+            }
 
-        //    try
-        //    {
-        //        rowIndex += 1;
-        //        if (reader_booklist.Count <= rowIndex)
-        //        {
-        //            throw new Exception();
-        //        }
+            try
+            {
+                rowIndex += 1;
+                if (reader_booklist.Count <= rowIndex)
+                {
+                    throw new Exception();
+                }
 
-        //        int id = reader_booklist[rowIndex].Id;
-        //        reader_book = DataContext.Select<Карта_Читателя>().Where(o => o.ID == id).First();
+                string id  = reader_booklist[rowIndex].Id;
+                //string rId = Convert.ToString(ReaderId);
+                //Читатели a = DataContext.Select<Читатели>().Where(o => o.ID == ReaderId).First();
+                reader_book = DataContext.Select<Карта_Читателя>().Where(o => o.ID == id).First();
 
-        //    }
-        //    catch (Exception)
-        //    {
-        //        rowIndex = 0;
-        //        reader_book = DataContext.Select<Карта_Читателя>().FirstOrDefault();
-        //    }
-        //    finally
-        //    {
-        //        booksGrid.Rows[rowIndex].Selected = true;
-        //        InitTextBox();
-        //    }
-        //}
+            }
+            catch (Exception)
+            {
+                rowIndex = 0;
+                reader_book = DataContext.Select<Карта_Читателя>().FirstOrDefault();
+            }
+            finally
+            {
+                booksGrid.Rows[rowIndex].Selected = true;
+                InitTextBox();
+            }
+        }
 
         private void SaveChanges_Click(object sender, EventArgs e)
         {
-        //    if (reader_book.ID == -1)
-        //    {
-        //        int id = DataContext.Select<Карта_Читателя>().ToList().Last().ID;
-        //        reader_book.ID = id + 1;
-        //    }
+            if (Convert.ToInt32(reader_book.ID) == -1)
+            {
+                int id = Convert.ToInt32(DataContext.Select<Карта_Читателя>().ToList().Last().ID);
+                reader_book.ID = Convert.ToString(id + 1);
+            }
 
-        //    reader_book.Имя = наименовниеTextBox.Text;
-        //    reader_book.Фамилия = FamiliaText.Text;
-        //    reader_book.Номер_телефона = NumberText.Text;
+            if (BookID != -1)
+            {
+                reader_book.Книга_ID = BookID;
+            }
+            reader_book.Читатель_ID = ReaderId;
+            reader_book.Дата_заказа = DateTime.Today;
+            DateTime dateMin = BackdateTimePicker.MinDate;
+            if (DataContext.Select<Карта_Читателя>().Where(o => o.ID == reader_book.ID).FirstOrDefault() != null)
+            {
+                DataContext.Update<Карта_Читателя>(DataContext.Select<Карта_Читателя>().Where(o => o.ID == reader_book.ID).First());
+            }
+            else
+            {
+                reader_book.Учёт = DataContext.Select<Учёт>().Where(o => o.Книга_ID == reader_book.Книга_ID).First();
+                DataContext.Insert<Карта_Читателя>(reader_book);
+            }
 
-        //    if (DataContext.Select<Карта_Читателя>().Where(o => o.ID == reader_book.ID).FirstOrDefault() != null)
-        //    {
-        //        DataContext.Update<Карта_Читателя>(DataContext.Select<Карта_Читателя>().Where(o => o.ID == reader_book.ID).First());
-        //    }
-        //    else
-        //    {
-        //        DataContext.Insert<Карта_Читателя>(reader_book);
-        //    }
-        //    InitList();
-        //    InitGrid();
+            if (BackdateTimePicker.Value != dateMin)
+            {
+                reader_book.Дата_возврата = BackdateTimePicker.Value;
+
+                var a = DataContext.Select<Учёт>().Where(o => o.Книга_ID == reader_book.Книга_ID).First();
+                a.Статус_ID = 1;
+                DataContext.Update<Учёт>(a);
+            }
+            else
+            {
+                reader_book.Дата_возврата = null;
+                var a = DataContext.Select<Учёт>().Where(o => o.Книга_ID == reader_book.Книга_ID).First();
+                a.Статус_ID = 2;
+                //reader_book.Учёт.Статус_ID = 2;
+
+                DataContext.Update<Учёт>(a);
+
+            }
+
+            
+
+            InitList();
+            InitGrid();
+            BookID = -1;
         }
 
-        //private void AddButton_Click(object sender, EventArgs e)
-        //{
-        //    reader_book = new Карта_Читателя();
-        //    reader_book.ID = -1;
-        //    наименовниеTextBox.Text = "";
+        private void UpdateButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                reader_book.Книга_ID = BookID;
+                reader_book.Дата_заказа = DateTime.Today;
+                InitTextBox();
+            }
+            catch(Exception)
+            {
+                MessageBox.Show("Книга не выбранна");
+            }
+        }
 
-        //    FamiliaText.Text = "";
-        //    NumberText.Text = "";
-        //}
+        private void AddButton_Click(object sender, EventArgs e)
+        {
+            reader_book = new Карта_Читателя();
+            reader_book.ID = "-1";
+            наименовниеTextBox.Text = "";
 
-        //private void BooksWindow_FormClosing(object sender, FormClosingEventArgs e)
-        //{
-        //    this.Owner.Show();
-        //}
+            GetDateText.Text = "";
+        }
 
-        //private void textBox1_TextChanged(object sender, EventArgs e)
-        //{
-        //    if (textBox1.Text != "")
-        //    {
-        //        booksGrid.DataSource = reader_booklist.Where(u => u.Имя.ToLower().Contains(textBox1.Text.ToLower())).ToList();
+        private void BooksWindow_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            this.Owner.Show();
+        }
 
-        //    }
-        //    else
-        //    {
-        //        InitGrid();
-        //    }
-        //}
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text != "")
+            {
+                booksGrid.DataSource = reader_booklist.Where(u => u.Книга.ToLower().Contains(textBox1.Text.ToLower())).ToList();
+            }
+            else
+            {
+                InitGrid();
+            }
+        }
 
         //private void booksGrid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         //{

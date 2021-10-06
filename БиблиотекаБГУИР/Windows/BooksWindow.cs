@@ -184,6 +184,11 @@ namespace БиблиотекаБГУИР
             else
             {
                 DataContext.Insert<Книги>(book);
+                Учёт tmp = new Учёт();
+                tmp.ID = DataContext.Select<Учёт>().ToList().Last().ID + 1;
+                tmp.Книга_ID = book.ID;
+                tmp.Статус_ID = 1;
+                DataContext.Insert<Учёт>(tmp);
             }
             InitList();
             InitGrid();

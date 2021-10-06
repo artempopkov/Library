@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
 using System.Windows.Forms;
+using System.Data.Entity.Validation;
 
 namespace БиблиотекаБГУИР
 {
@@ -27,10 +28,23 @@ namespace БиблиотекаБГУИР
                 context.Entry(entity).State = EntityState.Added;
                 context.SaveChanges();
             }
-            catch(Exception)
+            catch (DbEntityValidationException ex)
             {
+                foreach (DbEntityValidationResult validationError in ex.EntityValidationErrors)
+                {
+                    MessageBox.Show("Object: " + validationError.Entry.Entity.ToString());
+                        foreach (DbValidationError err in validationError.ValidationErrors)
+                        {
+                            MessageBox.Show(err.ErrorMessage + "");
+                        }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
                 MessageBox.Show("Попытка дублирования данных");
             }
+            
 
         }
 

@@ -44,3 +44,7 @@ D:\00Library\Library\БиблиотекаБГУИР\obj\Debug\Библиотек
 D:\00Library\Library\БиблиотекаБГУИР\obj\Debug\БиблиотекаБГУИР.ReadersWindow.resources
 D:\00Library\Library\БиблиотекаБГУИР\obj\Debug\БиблиотекаБГУИР.ReaderBook.resources
 D:\00Library\Library\БиблиотекаБГУИР\obj\Debug\БиблиотекаБГУИР.SelectBookWindow.resources
+C:\Users\King\source\repos\БиблиотекаБГУИР\БиблиотекаБГУИР\obj\Debug\БиблиотекаБГУИР.ReaderBook.resources
+C:\Users\King\source\repos\БиблиотекаБГУИР\БиблиотекаБГУИР\obj\Debug\БиблиотекаБГУИР.LibrarianWindow.resources
+C:\Users\King\source\repos\БиблиотекаБГУИР\БиблиотекаБГУИР\obj\Debug\БиблиотекаБГУИР.ReadersWindow.resources
+C:\Users\King\source\repos\БиблиотекаБГУИР\БиблиотекаБГУИР\obj\Debug\БиблиотекаБГУИР.SelectBookWindow.resources

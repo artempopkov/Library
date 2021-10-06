@@ -43,6 +43,7 @@ namespace БиблиотекаБГУИР
             this.booksGrid = new System.Windows.Forms.DataGridView();
             this.наименовниеTextBox = new System.Windows.Forms.TextBox();
             this.BackdateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.UpdateButton = new System.Windows.Forms.Button();
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             наименовниеLabel = new System.Windows.Forms.Label();
@@ -117,6 +118,7 @@ namespace БиблиотекаБГУИР
             this.AddButton.TabIndex = 122;
             this.AddButton.Text = "Добавить";
             this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.AddButton_Click);
             // 
             // SaveChanges
             // 
@@ -136,6 +138,7 @@ namespace БиблиотекаБГУИР
             this.NextItem.TabIndex = 120;
             this.NextItem.Text = "Следующий";
             this.NextItem.UseVisualStyleBackColor = true;
+            this.NextItem.Click += new System.EventHandler(this.NextItem_Click);
             // 
             // PriviousItem
             // 
@@ -145,6 +148,7 @@ namespace БиблиотекаБГУИР
             this.PriviousItem.TabIndex = 119;
             this.PriviousItem.Text = "Предыдущий";
             this.PriviousItem.UseVisualStyleBackColor = true;
+            this.PriviousItem.Click += new System.EventHandler(this.PriviousItem_Click);
             // 
             // booksGrid
             // 
@@ -170,11 +174,22 @@ namespace БиблиотекаБГУИР
             this.BackdateTimePicker.Size = new System.Drawing.Size(189, 20);
             this.BackdateTimePicker.TabIndex = 131;
             // 
+            // UpdateButton
+            // 
+            this.UpdateButton.Location = new System.Drawing.Point(630, 92);
+            this.UpdateButton.Name = "UpdateButton";
+            this.UpdateButton.Size = new System.Drawing.Size(75, 23);
+            this.UpdateButton.TabIndex = 132;
+            this.UpdateButton.Text = "Обновить";
+            this.UpdateButton.UseVisualStyleBackColor = true;
+            this.UpdateButton.Click += new System.EventHandler(this.UpdateButton_Click);
+            // 
             // ReaderBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(791, 217);
+            this.Controls.Add(this.UpdateButton);
             this.Controls.Add(this.BackdateTimePicker);
             this.Controls.Add(label2);
             this.Controls.Add(label1);
@@ -193,6 +208,7 @@ namespace БиблиотекаБГУИР
             this.Name = "ReaderBook";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReaderBook";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.BooksWindow_FormClosing);
             this.Load += new System.EventHandler(this.ReaderBook_Load);
             ((System.ComponentModel.ISupportInitialize)(this.booksGrid)).EndInit();
             this.ResumeLayout(false);
@@ -212,5 +228,6 @@ namespace БиблиотекаБГУИР
         private System.Windows.Forms.DataGridView booksGrid;
         private System.Windows.Forms.TextBox наименовниеTextBox;
         private System.Windows.Forms.DateTimePicker BackdateTimePicker;
+        private System.Windows.Forms.Button UpdateButton;
     }
 }
